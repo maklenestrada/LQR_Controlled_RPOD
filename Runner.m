@@ -95,6 +95,9 @@ end
 %% Cost Function
 J = Calculate_Cost_Function(U,Xo,A,B,Q,R,ts);
 
+%% Control Saturation Limit Check
+[U_Min,U_Max] = U_Constraint_Check(U,ux_min,ux_max,uy_min,uy_max,uz_min,uz_max,ts);
+
 %% Plots 
 x_pos = x_traj(1,:);
 y_pos = x_traj(2,:);

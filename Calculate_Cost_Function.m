@@ -27,9 +27,9 @@ for i = 1:(ts-1)
 
     %X at current time step
     x_i = x(:,i+1);
-    
+
     %Compute the cost
-    J_i = (x_i' * Q * x_i) + (u_i' * R * u_i) + (x_i' * S * x_i)
+    J_i = (x_i' * Q * x_i) + (u_i' * R * u_i) + (x_i' * S * x_i);
     J = J + J_i;
 
     %Update State 
