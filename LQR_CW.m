@@ -164,6 +164,9 @@ for i = 1:(ts-1)
     x_traj(:,i+1) = Abar * x_traj(:,i) + Bbar * u;
 end
 
+x_pos = x_traj(1,:);
+y_pos = x_traj(2,:);
+z_pos = x_traj(3,:);
 %Plot
 t = linspace(t_i,t_f,ts);
 figure
