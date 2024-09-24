@@ -48,7 +48,7 @@ x_traj(:,1) = Xo; %Set Initial value in array
 %Initialize Control array
 U = zeros(3,ts);
 
-%Gain Value Saturation Limits (Randomly Chosen for now)
+%Control Saturation Limits (Randomly Chosen for now)
 ux_min = .0005;
 ux_max = 1e27;
 uy_min = .0005;
@@ -93,7 +93,7 @@ for i = 1:(ts-1)
 end
 
 %% Cost Function
-J = Calculate_Cost_Function(U,Xo,A,B,Q,R,ts);
+J = Cost_Function(U,Xo,A,B,Q,R,ts);
 
 %% Control Saturation Limit Check
 [U_Min,U_Max] = U_Constraint_Check(U,ux_min,ux_max,uy_min,uy_max,uz_min,uz_max,ts);
