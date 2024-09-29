@@ -1,4 +1,4 @@
-function [U_Min,U_Max] = U_Constraint_Check(U,ux_min,ux_max,uy_min,uy_max,uz_min,uz_max,ts)
+function U_Check = U_Constraint_Check(U,ux_min,ux_max,uy_min,uy_max,uz_min,uz_max,ts)
 %Inputs:
 %   U: Control Vector
 %   U_min: Lower Bound on Control Saturation Limit
@@ -38,46 +38,48 @@ for i = 1:ts
    U_Max_Con(3,i) = U_z(i) - uz_max;
 end
 
-%Boolean Check
-for i = 1:ts
-    %Lower Bound Check
-    %X-Comp
-    if U_Min_Con(1,i) < 0
-        U_Min(1,i) = 1;
-    else 
-        U_Min(1,i) = 0;
-    end
-    %Y-Comp
-    if U_Min_Con(2,i) < 0
-        U_Min(2,i) = 1;
-    else 
-        U_Min(2,i) = 0;
-    end
-    %Z-Comp
-    if U_Min_Con(3,i) < 0
-        U_Min(3,i) = 1;
-    else 
-        U_Min(3,i) = 0;
-    end
+% %Boolean Check
+% for i = 1:ts
+%     %Lower Bound Check
+%     %X-Comp
+%     if U_Min_Con(1,i) < 0
+%         U_Min(1,i) = 1;
+%     else 
+%         U_Min(1,i) = 0;
+%     end
+%     %Y-Comp
+%     if U_Min_Con(2,i) < 0
+%         U_Min(2,i) = 1;
+%     else 
+%         U_Min(2,i) = 0;
+%     end
+%     %Z-Comp
+%     if U_Min_Con(3,i) < 0
+%         U_Min(3,i) = 1;
+%     else 
+%         U_Min(3,i) = 0;
+%     end
+% 
+%     %Upper Bound Check
+%     %X-Comp
+%     if U_Max_Con(1,i) < 0 
+%         U_Max(1,i) = 1;
+%     else
+%         U_Max(1,i) = 0;
+%     end
+%     %Y-Comp
+%     if U_Max_Con(2,i) < 0 
+%         U_Max(2,i) = 1;
+%     else
+%         U_Max(2,i) = 0;
+%     end
+%     %Z-Comp
+%     if U_Max_Con(3,i) < 0 
+%         U_Max(3,i) = 1;
+%     else
+%         U_Max(3,i) = 0;
+%     end
+% end
 
-    %Upper Bound Check
-    %X-Comp
-    if U_Max_Con(1,i) < 0 
-        U_Max(1,i) = 1;
-    else
-        U_Max(1,i) = 0;
-    end
-    %Y-Comp
-    if U_Max_Con(2,i) < 0 
-        U_Max(2,i) = 1;
-    else
-        U_Max(2,i) = 0;
-    end
-    %Z-Comp
-    if U_Max_Con(3,i) < 0 
-        U_Max(3,i) = 1;
-    else
-        U_Max(3,i) = 0;
-    end
-end
+U_Check = [U_Min_Con(1,:)';U_Max_Con(1,:)';U_Min_Con(2,:)';U_Max_Con(2,:)';U_Min_Con(3,:)';U_Max_Con(3,:)'];
 end
