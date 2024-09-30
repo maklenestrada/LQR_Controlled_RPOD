@@ -1,4 +1,5 @@
 %Maklen A. Estrada
+%This script is to test functions I am writing
 clear all
 clc
 close all
