@@ -1,4 +1,4 @@
-function [U_Min_Con,U_Max_Con] = U_Constraint_Check(U,ux_min,ux_max,uy_min,uy_max,uz_min,uz_max,ts)
+function [U_Max_Con,U_Min_Con] = U_Constraint_Check(U,ux_min,ux_max,uy_min,uy_max,uz_min,uz_max,ts)
 %Inputs:
 %   U: Control Vector
 %   U_min: Lower Bound on Control Saturation Limit
@@ -39,6 +39,6 @@ for i = 1:ts
 end
 
 
-%U_Check = [U_Min_Con(1,:)';U_Max_Con(1,:)';U_Min_Con(2,:)';U_Max_Con(2,:)';U_Min_Con(3,:)';U_Max_Con(3,:)'];
+U_Check = [U_Min_Con(1,:)';U_Max_Con(1,:)';U_Min_Con(2,:)';U_Max_Con(2,:)';U_Min_Con(3,:)';U_Max_Con(3,:)'];
 
 end
